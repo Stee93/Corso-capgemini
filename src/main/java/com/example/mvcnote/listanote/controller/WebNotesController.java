@@ -1,6 +1,9 @@
 package com.example.mvcnote.listanote.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,9 +53,25 @@ public class WebNotesController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/delete/{notaId}", method=RequestMethod.GET)
+	public ModelAndView delete_confirm(@PathVariable Integer notaId) {
+		ModelAndView mav=new ModelAndView();
+		Optional<Nota> notaFound=noteService.findById(notaId);
+		mav.addObject("nota", notaFound.get());
+		mav.setViewName("delete_confirm");
+		return mav;
+	}
+	
 	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	public ModelAndView do_update(@Valid Nota n, BindingResult bindingResult) {
 		noteService.saveNota(n);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value="/do_delete", method=RequestMethod.POST)
+	public ModelAndView do_delete(@Valid Nota n, BindingResult bindingResult) {
+		System.out.println(n.getId());
+		noteService.deleteNota(n);
 		return new ModelAndView("redirect:/");
 	}
 
