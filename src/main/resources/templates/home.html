@@ -11,11 +11,11 @@
 	</head>
 		<body>
 			<div>Home</div>
-				<form action="#" method="post" th:action="@{/salva}" th:object="${nota}">
-					<input type="text" th:field="*{titolo}" placeholder="titolo">
-					<input type="text" th:field="*{contenuto}" placeholder="contenuto">
-					<input type="submit" value="salva"/>
-				</form>
+			<form action="#" method="post" th:action="@{/salva}" th:object="${nota}">
+				<input type="text" th:field="*{titolo}" placeholder="titolo">
+				<input type="text" th:field="*{contenuto}" placeholder="contenuto">
+				<input type="submit" value="salva"/>
+			</form>
 			<ul>
 				<li th:each="nota: ${listaNote}">
 					<b th:text="${nota.titolo}">Titolo Nota</b> <!-- cicla ogni volta che nota contiene listaNote -->
