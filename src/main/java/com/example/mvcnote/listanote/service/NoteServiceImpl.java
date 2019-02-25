@@ -34,5 +34,10 @@ public class NoteServiceImpl implements NoteService {
 	public Optional<Nota> findById(Integer notaId) {
 		return noteRepository.findById(notaId);
 	}
+	
+	@Override
+	public void deleteNota(Nota n) {
+		noteRepository.delete(n);
+	}
 
 }
