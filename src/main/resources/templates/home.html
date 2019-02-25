@@ -11,7 +11,7 @@
 	</head>
 		<body>
 			<div>Home</div>
-				<form action="#" method="post" th:action="@{/}" th:object="${nota}">
+				<form action="#" method="post" th:action="@{salva}" th:object="${nota}">
 					<input type="text" th:field="*{titolo}" placeholder="titolo">
 					<input type="text" th:field="*{contenuto}" placeholder="contenuto">
 					<input type="submit" value="salva"/>
