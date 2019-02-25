@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8">
+		<meta name = "viewport" content = "width=device-width,initial-scale=1.0" >
+		
+	</head>
+		<body>
+			<div>Home</div>
+			<ul>
+				<li th:each="nota: ${listaNote}">
+					<b th:text="${nota.titolo}">Titolo Nota</b> <!-- cicla ogni volta che nota contiene listaNote -->
+					<p th:text="${nota.contenuto}">Contenuto</p>
+				</li>
+			</ul>
+		</body>
+</html>
