@@ -20,7 +20,10 @@
 				<li th:each="nota: ${listaNote}">
 					<b th:text="${nota.titolo}">Titolo Nota</b> <!-- cicla ogni volta che nota contiene listaNote -->
 					<p th:text="${nota.contenuto}">Contenuto</p>
-					<p><a href="#" th:href="@{|/edit/${nota.id}|}">Modifica</a></p>
+					<p>
+						<a href="#" th:href="@{|/edit/${nota.id}|}">Modifica</a>
+						<a href="#" th:href="@{|/delete/${nota.id}|}">Cancella</a>
+					</p>
 				</li>
 			</ul>
 		</body>
