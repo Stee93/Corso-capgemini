@@ -30,11 +30,14 @@ public class WebNotesController {
 		return mav;
 	}
 		
-	@RequestMapping(value="salva", method=RequestMethod.POST)
+	@RequestMapping(value="/salva", method=RequestMethod.POST)
 	public ModelAndView add(@Valid Nota nota,BindingResult bindingResult) {
 		ModelAndView mav=new ModelAndView();
 		noteService.saveNota(nota);
 		mav.setViewName("home");
+		List<Nota> listaNote = noteservice.getAll();
+		mav.addObject("listaNote",listaNote);
+		mav.addObject("nota", new Nota());
 		return mav;
 	}
 		
