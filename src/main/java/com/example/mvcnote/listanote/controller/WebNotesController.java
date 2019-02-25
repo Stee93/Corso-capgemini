@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,6 +42,18 @@ public class WebNotesController {
 		return mav;
 	}
 		
+	@RequestMapping(value="/edit/{notaId}", method=RequestMethod.GET)
+	public ModelAndView update(@PathVariable Integer notaId) {
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("nota", noteService.findById(notaId));
+		mav.setViewName("edit_nota");
+		return mav;
+	}
 	
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	public ModelAndView do_update(@Valid Nota n, BindingResult bindingResult) {
+		noteService.saveNota(n);
+		return new ModelAndView("redirect:/");
+	}
 
 }
