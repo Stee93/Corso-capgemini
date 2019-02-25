@@ -18,13 +18,21 @@ public class NoteServiceImpl implements NoteService {
 	@Override
 	public void saveNota(Nota n) {
 		noterepository.save(n);
-		
 	}
 
 	@Override
 	public List<Nota> getAll() {
-		
 		return noterepository.findAll();
+	}
+	
+	@Override
+	public void update(Nota n) {
+		noteRepository.save(n);		
+	}
+
+	@Override
+	public Optional<Nota> findById(Integer notaId) {
+		return noteRepository.findById(notaId);
 	}
 
 }
